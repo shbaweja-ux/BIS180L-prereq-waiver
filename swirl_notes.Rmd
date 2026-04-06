@@ -1,0 +1,235 @@
+---
+title: "swirl_notes"
+output: html_document
+---
+
+__Name:__ Shefali Baweja
+__ID Number:__ 920925812
+
+## Basic Building Blocks
+Set variables using <- notation
+
+* spaces on either side of numbers are important
+```
+x <- 5 + 7
+```
+From now on you can just use the variable "x" to receive the value 12
+
+You can use previously made variables to generate new variables
+
+Vector = small collection of numbers
+
+* even a single number is a vector, length one
+Data structure = any object that contains data
+
+Create vectors using the c() command
+```
+c(1.1, 9, 3,14)
+```
+If you have questions about a particular command, use the ? command
+```
+?c
+```
+You can combine vectors too
+```
+c(z, 555, z)
+```
+Output: 1.10  9.00  3.14  555.00  9.00 3.14
+
+Math in R follows standard order of operations
+```
+z * 2 + 100
+```
+Multiply first, then add
+
+Other commands: "+", "-", "*", "/", "sqrt()", "abs()"
+
+You can assign variables to these equations as well
+
+If 2 vectors are being used in an equation, there are different outcomes based on their lengths
+
+* if same length, operation performed element-by-element
+* if different length, shorter vector is recycled until same length as longer vector
+* if division won't be clean among vectors, you will get a sort of warning
+
+If you did something wrong, you can use the up arrow on the keyboard to retrieve an old operation and edit it
+
+## Sequences of Numbers
+The easiest way is the use the ":" operator
+
+* don't use spaces here
+```
+1:20
+```
+Output: all numbers 1 through 20
+
+You can use this to generate a sequence of real numbers with fractional/irrational bounds
+```
+pi:10
+```
+The upper bound of 10 is never reached, R just adds 1 to pi until right below the threshold
+Output: 3.141593 4.141593 5.141593 6.141593 7.141593 8.141593 9.141593
+
+If reverse order, you get reverse ordered list still
+```
+15:1
+```
+Output: 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1
+
+The seq() command also works, and gives you more control
+For example:
+```
+seq (1, 20, by=0.5)
+```
+Output: 1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5  8.0  8.5  9.0  9.5 10.0 10.5 11.0 11.5 12.0 12.5 13.0 13.5 14.0 14.5 15.0 15.5 16.0 16.5 17.0 17.5 18.0 18.5 19.0 19.5 20.0
+
+Maybe you just want a list of 30 numbers between 1 and 20
+```
+seq (1, 20, length=30)
+```
+Output: 1.000000  1.655172  2.310345  2.965517  3.620690  4.275862  4.931034  5.586207  6.241379  6.896552  7.551724  8.206897  8.862069  9.517241 10.172414 10.827586 11.482759 12.137931 12.793103 13.448276  14.103448 14.758621 15.413793 16.068966 16.724138 17.379310 18.034483 18.689655 19.344828 20.000000
+
+Confirm length using length() command
+```
+my_seq <- seq (1, 20, length=30)
+length(my_seq)
+```
+Output: 30
+ The along.with command gives you the length from the length of the argument
+ Also, seq_along() command given by R
+ Many ways to approach the same problem
+ 
+ Rep() is the replicate command
+ 
+Say we want a vector with 40 zeros
+```
+rep (0, times = 40)
+```
+Output: 40 zeros
+
+What if we want to create a new vector with 10 repetitions of another vector
+```
+rep (c(0, 1, 2), times = 10)
+```
+Output: 0 1 2 0 1 2 ... etc.
+
+but what if we want 10 zeros, then 10 ones, then 10 twos
+```
+rep (c(0, 1, 2), each = 10)
+```
+Output: 00000000001111111111122222222222
+
+## Vectors
+Vectors can be numerical but also logical, character, integer, complex
+
+Logical vectors can contain values TRUE, FALSE, NA (aka conditions)
+
+you can do operations 
+```
+variable2 <- c(0.5, 55, -10, 6)
+variable <- variable2 > 1
+```
+Logical operators "<" ">" "==" (exact equality) "!=" (unequal) "<=" ">="
+
+Use "&" if you want to indicate BOTH of 2 statements are TRUE
+
+Use "|" if you want to indicate at least 1 is TRUE
+
+words should be placed within "quotes"
+* example: if you want to assign a word output to a number result
+
+paste() to combine elements
+* "sep =" within () of paste command to tell R what to separate the elements with 
+```
+paste("hello", "world", sep " ")
+```
+this separates the words with a singel space
+
+LETTERS is predefined in R as all 26 letters of the alphabet
+
+## Missing Values
+NA indicates a value is "not available"
+* not really a value, just that a value is not available
+
+rnorm() command generates random numbers from a normal distribution
+
+rep() command to repeat a term (ex: rep(NA, 1000) will generate a vector with 1000 NA values)
+
+is.na() command to show where data is NA
+
+Inf = infinity in R
+
+## Subsetting Vectors
+Create subsets using ":" to select a range
+* example: if you want a vector of values 1 through 20...
+```
+first_twenty <- c(1:20)
+```
+can use inequalities as well for ranges (example: y > 20, considering y has been defined)
+
+again, can use "&" to look for values in a vector that satisfy BOTH conditions given
+
+use c(value1, value2, value3, etc) to select for specific location of values in a vector
+
+you can multiply a vecotr by negative by placing a - sign before c()
+
+## Matrices and Data Frames
+dim() command gives dimensions of an object (more useful for matrices)
+
+length() command gives length of object (more useful for vector)
+
+attribute() command gives attributes of object
+
+class() to view class of object (can confirm matrix vs vector)
+
+matrix() command to create matrix
+
+cbind() command to combine columns
+
+data.frame() command allowed us to store our character vector of names right alongside our matrix of numbers
+
+## Logic
+Boolean values are "TRUE" and "FALSE" in R
+* used in logical expressions
+
+Used with "==" operator often 
+```
+4 == 4
+```
+ output: TRUE
+```
+TRUE == TRUE
+```
+TRUE statements are TRUE
+
+can use alongside "!" to negate statement or value
+
+## Functions
+Functions are small pieces of reusable code 
+
+Sys.Date() function returns today's date
+
+mean() function gives average
+
+sum() function adds up numbers
+
+## Looking at Data
+When looking at data, observe the format, dimensions, variable names, etc. 
+
+nrow() and ncol() to look at number or rows and columns in a dataset
+
+object.size() function tells how much space dataset is taking
+
+head() functions lets you look at top of data (first 6 rows by default)
+
+head(dataset, number): where the number indicates how many top rows will be shown to you with head function
+
+can also do tail() for last rows
+
+summary() function to summarize dataset
+
+str() function gives you outlook of structure of data
+
+
+
+
