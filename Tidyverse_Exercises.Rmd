@@ -1,0 +1,23 @@
+---
+title: "Tidyverse_Exercises"
+output: html_document
+---
+
+## Write an Rmarkdown script that imports the file
+```
+library(tidyverse)
+height.data <- read_csv("~/height_data_clean.csv")
+```
+
+## then use tidyverse functions to retain data only from January 27, 2023.
+```
+height.data <- read_csv("height_data_clean.csv")
+
+specific.date <- filter(height.data,survey_date == "2023-01-27")
+```
+
+## Summarize the data by computing the average height_cm for each pop (this should be done in just one to several lines of code?you don?t want to write separate code for computing each pop).
+```
+height.data %>% group_by(pop) %>% summarize(pop.mean=mean(height_cm))
+```
+
